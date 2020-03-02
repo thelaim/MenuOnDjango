@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>menu</title>
+</head>
+<body>
+{% for menu in menus %}
+	{{ menu.parent }} -
+    {{ menu.sub_menu_title }}
+     <br>
+{% endfor %}
+</body>
+</html>

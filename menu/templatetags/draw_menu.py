@@ -6,6 +6,7 @@ register = template.Library()
 
 @register.simple_tag#inclusion_tag('templates/draw_menu.html')
 def draw_menu(title_menu):
-	menu_title = Menu.objects.get(menu_title=title_menu)
-	context = SubMenu.objects.select_related().filter(menu = menu_title)
+	#menu_title = Menu.objects.get(menu_title=title_menu)
+	context = SubMenu.objects.select_related().filter(menu = title_menu)
 	return context
+

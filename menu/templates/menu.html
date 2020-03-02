@@ -9,7 +9,7 @@
 			{% draw_menu 'phone' as queries %}
 			<ul>
 				{% for item in queries %}
-					<li>{{item.sub_menu_title}}</li>
+					<li>{{item.sub_menu_title}} -- {{item.parent}}</li>
 				{% endfor %}
 			</ul>
 		{% endblock %}

@@ -4,10 +4,14 @@
 	<title>menu</title>
 </head>
 <body>
-{% for menu in menus %}
-	{{ menu.parent }} -
-    {{ menu.sub_menu_title }}
-     <br>
-{% endfor %}
+	{% load draw_menu %}
+		{% block menu %} 
+			{% draw_menu 'phone' as queries %}
+			<ul>
+				{% for item in queries %}
+					<li>{{item.sub_menu_title}}</li>
+				{% endfor %}
+			</ul>
+		{% endblock %}
 </body>
 </html>

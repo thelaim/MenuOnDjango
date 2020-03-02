@@ -60,7 +60,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # menu
-                'context_processors.draw_menu',
+                #'draw_menu.context_processors.context',
                 # default context processors
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -70,6 +70,10 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.app_directories.load_template_source',
+)
 
 WSGI_APPLICATION = 'app.wsgi.application'
 

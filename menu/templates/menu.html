@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>menu</title>
+	<title>Menu</title>
 </head>
 <body>
-	{% load draw_menu %}
-		{% block menu %} 
-			{% draw_menu 'phone' as queries %}
-			<ul>
-				{% for item in queries %}
-					<li>{{item.sub_menu_title}} -- {{item.parent}}</li>
-				{% endfor %}
-			</ul>
-		{% endblock %}
+
+{% load draw_menu %}
+
+
+{% draw_menu 'phone' request.path as q %}
+
+
+
+
+
+<div class="menu">
+	<a href="{{ q.named_url }}">{{ q.sub_menu_title }}</a>
+	{% if q.children %}
+		<details>
+    		<summary></summary>
+    		{% for child in q.children %}
+        		{% draw_menu_children child.id as child%}
+        		{{child.sub_menu_title}}
+    		{% endfor %}
+	</details>
+	{% endif %}
+</div>
 </body>
+<style type="text/css">
+	a{
+		font-size: 25px;
+		margin-bottom: 20px;
+	}
+	.menu{
+		width: 20%;
+		margin-left: 100px;
+	}
+	details{
+		font-size: 20px;
+	}
+</style>
 </html>

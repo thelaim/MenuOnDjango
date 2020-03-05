@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import View
 
 
-def get_menu(request):
-	return render(request, 'menu.html', {})
+class IndexView(View):
+    def get(self, request, params=None):
+        return render(request, 'menu.html')

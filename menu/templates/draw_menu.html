@@ -1,8 +1,13 @@
-<ul>
-    {% load draw_menu %}
-	{% block menu %}
-    	{% for item in context %}
-      		<li></li>
+{% load draw_menu %}
+
+<a href="{{ q.named_url }}">{{ q.sub_menu_title }}</a>
+
+{% if q.children %}
+	<details>
+    	<summary></summary>
+    	{% for child in q.children %}
+        	{% draw_menu_children child.id as child%}
+        	{{child.sub_menu_title}}
     	{% endfor %}
-	{% endblock %}
-</ul>
+	</details>
+{% endif %}
